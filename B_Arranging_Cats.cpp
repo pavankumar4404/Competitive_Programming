@@ -1,0 +1,56 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+// Speed
+#define fastio() ios_base::sync_with_stdio(false), cin.tie(nullptr), cout.tie(nullptr);
+
+// Macros
+#define rep(i,j) for(int i=0;i<j;i++)
+#define rrep(i,j) for(int i=j-1;i>=0;i--)
+#define all(x) x.begin(), x.end()
+#define yes cout<<"YES"<<endl
+#define no cout<<"NO"<<endl
+
+// Typedef
+typedef long long ll;
+typedef pair<int, int> pi;
+typedef vector<int> vi;
+typedef map<int,int> mii;
+
+void solve(){
+    int n;
+    cin>>n;
+    string a("",n),b("",n);
+
+    for(int i=0;i<n;i++){
+        cin>>a[i];
+    }
+    for(int i=0;i<n;i++){
+        cin>>b[i];
+    }
+    int ca=0,cb=0;
+    rep(i,n){
+        if(a[i]!=b[i]){
+            if(a[i]=='1'){
+                ca++;
+            }
+            if(b[i]=='1'){
+                cb++;
+            }
+        }
+    }
+    cout<<max(ca,cb)<<endl;
+    
+}
+
+int32_t main()
+{
+    fastio()
+    int t;
+    cin >> t;
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}
