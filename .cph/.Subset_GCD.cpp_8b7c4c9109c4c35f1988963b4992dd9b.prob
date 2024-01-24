@@ -1,0 +1,1 @@
+{"name":"Local: Subset_GCD","url":"c:\\Users\\HP\\Documents\\Codes\\Competitive_Programming\\Subset_GCD.cpp","tests":[{"id":1706107736608,"input":"6\n3 2\n3 3\n4 2\n15 4\n15 3\n1 1","output":"2 3\n1 2 3\n2 4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\HP\\Documents\\Codes\\Competitive_Programming\\Subset_GCD.cpp","group":"local","local":true}
