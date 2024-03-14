@@ -22,21 +22,19 @@ typedef map<int,int> mii;
 
 void solve(){
     inp(n);
-    vi arr(n);
-    rep(i,n) cin>>arr[i];
-
-    sort(all(arr));
-    int i=0;
-    int j=n-1;
-    int k=arr[i]+arr[j];
-    while(i<=j){
-        if(arr[i]+arr[j]!=k){
-            no;
-            return;
-        }
-        i++,j--;
+    // vi arr(n);
+    map<int,int> mp;
+    rep(i,n) {
+        int x;
+        cin>>x;
+        mp[x]++;
     }
-    yes;
+    if(mp.size()>2) no;
+
+    else if(abs(mp.begin()->second - mp.rbegin()->second) >1) no;
+        
+    else yes;
+
 }
 
 int32_t main()
