@@ -52,50 +52,22 @@ typedef unordered_set<ll> usll;
 #define outln(x) cout<<x<<'\n';
 #define sz(a) (int)a.size()
 
-// int minMaxDifference(int N, int K, vector<int>& A) {
-//     int min_val = *min_element(A.begin(), A.end());
-//     int max_val = *max_element(A.begin(), A.end());
-//     int min_diff = max_val - min_val;
-
-//     // Increase elements less than max_val to max_val
-//     for (int i = 0; i < N; ++i) {
-//         if (A[i] < max_val) {
-//             A[i] += K;
-//         }
-//     }
-
-//     // Decrease elements greater than min_val to min_val
-//     for (int i = 0; i < N; ++i) {
-//         if (A[i] > min_val) {
-//             A[i] -= K;
-//         }
-//     }
-
-//     // Recalculate min_diff after adjustments
-//     min_val = *min_element(A.begin(), A.end());
-//     max_val = *max_element(A.begin(), A.end());
-//     min_diff = max_val - min_val;
-
-//     return min_diff;
-// }
 void solve(){
-    inp2(n,k)
+    inp2(n,q);
     inplarr(arr,n);
-    sort(all(arr));
-    ll mini=arr[0];
-    ll maxi=arr[n-1];
-    ll diff=maxi-mini;
-    for(int i=0;i<n-1;i++){
-        ll num=arr[i];
-        ll d=maxi-num;
-        num=(d/k)*k+num;
-        if(abs(num-maxi) > abs(num+k-maxi)){
-            arr[i]=num+k;
-        }
-        else arr[i]=num;
+    vector<int> odds(n+1,0);
+    int cnt=0;
+    for(int i=1;i<=n;i++){
+        if(arr[i-1]%2==1) cnt++;
+        odds[i]=cnt;
     }
-    sort(all(arr));
-    out(arr[n-1]-arr[0]);
+    rep(i,q){
+        inp3l(l,r,k);
+        int odd = cnt-(odds[r]-odds[l-1]) + (r-l+1)*(k%2);
+        if(odd % 2==1) yes
+        else no
+        br;
+    }
 }
 
 int32_t main()
@@ -106,7 +78,7 @@ int32_t main()
     while(t--)
     {
         solve();
-        br;
+        // br;
     }
     return 0;
 }
