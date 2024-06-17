@@ -55,17 +55,30 @@ typedef unordered_set<ll> usll;
 void solve(){
     inp(n);
     inplarr(a,n);
-    unordered_set<ll> s;
+    set<ll> s;
     ll sum=0;
     ll ans=0;
     for(int i=0; i<n; i++){
         sum+=a[i];
         s.insert(a[i]);
-        if(sum%2==0 && s.count(sum/2)){
+        if (sum&1) continue;
+        if(s.find(sum/2)!=s.end()){
             ans++;
         }
     }
     out(ans)
+
+
+    // set<ll> st;
+    // ll ans=0;
+    // ll sum=0;
+    // for(int i=0;i<n;i++){
+    //     st.insert(arr[i]);
+    //     sum+=arr[i];
+    //     if(sum&1) continue;
+    //     if(st.find(sum/2)!=st.end()) ans++;
+    // }
+    // cout<<ans<<endl;
 }
 
 int32_t main()
