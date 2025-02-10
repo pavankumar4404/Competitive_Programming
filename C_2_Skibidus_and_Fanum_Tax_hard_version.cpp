@@ -66,16 +66,27 @@ typedef unordered_set<ll> usll;
 
 void solve(){
     inp2(n, m)
-    vi a (n, 0);
-    for(int i=0; i<n; i++){
-        inp(x)
-        a[i] = x;
-    }
-    inp(b)
-    a[0] = min(a[0], b-a[0]);
+    inplarr(a,n);
+    inplarr(b, m);
+    sort(all(b));
+
+    a[0] = min(a[0], b[0]-a[0]);
     for(int i=1; i<n; i++){
-        int mn = min(a[i], b-a[i]);
-        int mx = max(a[i], b-a[i]);
+        //imp - to search for the first element where a specifc condition fails
+        auto it = lower_bound(b.begin(), b.end(), -15, [&](ll d, ll _) {
+            return d-a[i] < a[i-1];
+        });
+
+        if (it == b.end()) {
+            if(a[i] < a[i-1]){
+                no
+                return;
+            }
+            continue;
+        }
+        ll j = *it;
+        ll mn = min(a[i], j-a[i]);
+        ll mx = max(a[i], j-a[i]);
         if(a[i-1] <= mn){
             a[i] = mn;
         }
@@ -83,6 +94,12 @@ void solve(){
             a[i] = mx;
         }
         else{
+            no
+            return;
+        }
+    }
+    for(int i=1; i<n; i++){
+        if(a[i-1] > a[i]){
             no
             return;
         }
