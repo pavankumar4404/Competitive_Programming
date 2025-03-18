@@ -64,37 +64,38 @@ typedef unordered_set<ll> usll;
 #define outln(x) cout<<x<<'\n';
 #define sz(a) (int)a.size()
 
-void solve() {
-    ll n,m,ans = 0; cin >> n >> m;
-    vector<ll> x(n, 0), r(n, 0);
-    map<ll, ll> mp;
-
-    for (auto &it : x)
-        cin >> it;
-    for (auto &it : r)
-        cin >> it;
-
-    for (int i = 0; i < n; ++i){
-        ll left = x[i] - r[i];
-        ll right = x[i] + r[i];
-        for (ll points = left; points <= right; ++points){
-            ll maxY = sqrt((r[i] * r[i]) - ((points - x[i]) * (points - x[i])));
-            mp[points] = max(mp[points], maxY);
+void solve(){
+    inp2l(n, k)
+    inplarr(a, n)
+    if(k == 1){
+        // select max(arr[0]+arr[i], arr[i]+arr[n-1])
+        ll ans = 0;
+        for(int i=0; i<n-1; i++){
+            ans = max(ans, a[i]+a[n-1]);
         }
+        for(int i=1; i<n; i++){
+            ans = max(ans, a[0]+a[i]);
+        }
+        out(ans)
     }
-
-    for (auto it : mp)
-    {
-        ans += 2 * it.second + 1;
+    else{
+        //select k+1 largest elements
+        ll ans =0 ;
+        sort(all(a), greater<ll>());
+        for(int i=0; i<k+1; i++){
+            ans += a[i];
+        }
+        out(ans)
     }
-    out(ans)
 }
 
-int32_t main() {
-    fastio();
+int32_t main()
+{
+    fastio()
     int t;
     cin >> t;
-    while (t--) {
+    while(t--)
+    {
         solve();
         br;
     }
