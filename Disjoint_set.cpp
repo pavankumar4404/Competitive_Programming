@@ -35,6 +35,10 @@ public:
             size[up_u] += size[up_v];
         }
     }
+
+    bool isConnected(int u, int v){
+        return findPar(u) == findPar(v);
+    }
 };
 
 
