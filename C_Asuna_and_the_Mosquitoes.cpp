@@ -64,28 +64,24 @@ typedef unordered_set<ll> usll;
 #define outln(x) cout<<x<<'\n';
 #define sz(a) (int)a.size()
 
-set<ll> nums;
 void solve(){
-    inpl(n)
-    if(nums.count(n)){
-        yes
+    int n; cin >> n;
+    vector <int> a(n);
+    long long ans = 0, cnt = 0;
+    for (int i = 0; i < n; ++i) {
+        cin >> a[i];
+        ans += a[i]; cnt += (a[i] & 1);
     }
-    else no
+    if (!cnt || cnt == n) {
+        cout << *max_element(a.begin(), a.end());
+    } else {
+        cout << ans - cnt + 1;
+    }
 }
 
 int32_t main()
 {
     fastio()
-    for (long long k = 2; k <= 1000; ++k) {
-        long long val = 1 + k;
-        long long p = k*k;
-        for (int cnt = 2; cnt <= 20; ++cnt) {
-            val += p;
-            if (val > 1e6) break;
-            nums.insert(val);            
-            p *= k;
-        }
-    }
     int t;
     cin >> t;
     while(t--)

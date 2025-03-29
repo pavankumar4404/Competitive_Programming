@@ -64,10 +64,22 @@ typedef unordered_set<ll> usll;
 #define outln(x) cout<<x<<'\n';
 #define sz(a) (int)a.size()
 
-set<ll> nums;
 void solve(){
-    inpl(n)
-    if(nums.count(n)){
+    inp(n)
+    inpstr(a)
+    inpstr(b)
+    int cnt1 = 0, cnt2 = 0;
+    for(int i=0; i<n; i++){
+        if(i % 2 == 0){
+            if(a[i] == '1') cnt1++;
+            if(b[i] == '1') cnt2++;
+        }
+        else{
+            if(b[i] == '1') cnt1++;
+            if(a[i] == '1') cnt2++;
+        }
+    }
+    if(cnt1 <= n/2 && cnt2 <= (n+1)/2){
         yes
     }
     else no
@@ -76,16 +88,6 @@ void solve(){
 int32_t main()
 {
     fastio()
-    for (long long k = 2; k <= 1000; ++k) {
-        long long val = 1 + k;
-        long long p = k*k;
-        for (int cnt = 2; cnt <= 20; ++cnt) {
-            val += p;
-            if (val > 1e6) break;
-            nums.insert(val);            
-            p *= k;
-        }
-    }
     int t;
     cin >> t;
     while(t--)
